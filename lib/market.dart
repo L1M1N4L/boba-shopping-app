@@ -1,3 +1,4 @@
+import 'package:currency_formatter/currency_formatter.dart';
 import 'package:flutter/material.dart';
 import 'package:grocerystoreapp/cart_model.dart';
 import 'package:grocerystoreapp/grocery_item_tile.dart';
@@ -8,21 +9,31 @@ class Market extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    CurrencyFormat RupiahSettings = CurrencyFormat(
+      symbol: 'Rp ',
+      symbolSide: SymbolSide.left,
+      thousandSeparator: '.',
+      decimalSeparator: ',',
+      symbolSeparator: ' ',
+    );
     return Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // good morning bro
+          //Header
           const Padding(
             padding: EdgeInsets.only(left: 24.0, right: 24.0, top: 10.0),
-            child: Text('Good morning,', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
+            child: Text(
+              'Good morning,',
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+            ),
           ),
 
-          // Let's order fresh items for you
+          // SubHeader
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24.0),
             child: Text(
-              "Let's order fresh items for you",
+              "Let's brew up boba bliss for you.",
             ),
           ),
 
@@ -31,32 +42,34 @@ class Market extends StatelessWidget {
             child: Divider(),
           ),
 
-          // categories -> horizontal listview
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24.0),
-            child: Text(
-              "Fresh Items",
-            ),
-          ),
-
           Expanded(
-            child: GridView.count(
-          // Create a grid with 2 columns. If you change the scrollDirection to
-          // horizontal, this produces 2 rows.
-          crossAxisCount: 2,
-          // Generate 100 widgets that display their index in the List.
-          children: List.generate(100, (index) {
-            return Center(
-              child: Text(
-                'Item $index',
-                style: Theme.of(context).textTheme.headlineSmall,
-              ),
-            );
-          }))
+            child: Consumer<CartModel>(
+              builder: (context, value, child) {
+                return GridView.builder(
+                  padding: const EdgeInsets.all(8),
+                  itemCount: value.shopItems.length,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    childAspectRatio: 1 / 1.2,
+                  ),
+                  itemBuilder: (context, index) {
+                    return GroceryItemTile(
+                      itemName: value.shopItems[index][0],
+                      itemPrice: CurrencyFormatter.format(
+                          value.shopItems[index][1], RupiahSettings),
+                      imagePath: value.shopItems[index][2],
+                      color: value.shopItems[index][3],
+                      onPressed: () =>
+                          Provider.of<CartModel>(context, listen: false)
+                              .addItemToCart(index),
+                    );
+                  },
+                );
+              },
+            ),
           ),
         ],
       ),
     );
   }
 }
-

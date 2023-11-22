@@ -25,7 +25,7 @@ class GroceryItemTile extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
-          color: color[100],
+          color: color[200],
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -36,7 +36,6 @@ class GroceryItemTile extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 40.0),
               child: Image.asset(
                 imagePath,
-                height: 64,
               ),
             ),
 
@@ -48,15 +47,19 @@ class GroceryItemTile extends StatelessWidget {
               ),
             ),
 
-            MaterialButton(
-              onPressed: onPressed,
-              color: color,
-              child: Text(
-                '\$' + itemPrice,
+            Text(
+              itemPrice,
                 style: TextStyle(
-                  color: Colors.white,
+                  color: Colors.black,
                   fontWeight: FontWeight.bold,
                 ),
+            ),
+
+            ElevatedButton(
+              onPressed: onPressed,
+              style: ElevatedButton.styleFrom(backgroundColor: color),
+              child: Text(
+                "Purchase"
               ),
             )
           ],
