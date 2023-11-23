@@ -39,7 +39,7 @@ class IntroScreen extends StatelessWidget {
                 children: <Widget>[
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      minimumSize: Size(double.infinity,60),
+                      minimumSize: Size(double.infinity, 60),
                       backgroundColor: Colors.grey[50],
                       elevation: 10,
                       shape: RoundedRectangleBorder(
@@ -52,8 +52,10 @@ class IntroScreen extends StatelessWidget {
                     },
                     child: Text(
                       "Login",
-                      style:
-                          TextStyle(color: Colors.black, fontWeight: FontWeight.w600, fontSize: 18),
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 18),
                     ),
                   ),
                   SizedBox(
@@ -70,7 +72,7 @@ class IntroScreen extends StatelessWidget {
                         )),
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        minimumSize: Size(double.infinity,60),
+                        minimumSize: Size(double.infinity, 60),
                         backgroundColor: Color.fromARGB(255, 112, 91, 222),
                         elevation: 10,
                         shape: RoundedRectangleBorder(
@@ -80,12 +82,15 @@ class IntroScreen extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => MainPage(username: "Guest")));
+                                builder: (context) =>
+                                    MainPage(username: "Guest")));
                       },
                       child: Text(
                         "Sign up",
                         style: TextStyle(
-                            fontWeight: FontWeight.w600, fontSize: 18),
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 18),
                       ),
                     ),
                   )
