@@ -4,9 +4,17 @@ import 'package:grocerystoreapp/cart_model.dart';
 import 'package:grocerystoreapp/grocery_item_tile.dart';
 import 'package:provider/provider.dart';
 
-class Market extends StatelessWidget {
-  const Market({super.key});
+class Market extends StatefulWidget {
+  const Market({super.key, required this.username});
 
+  final String username;
+
+  @override
+  State<Market> createState() => _MarketState();
+}
+
+class _MarketState extends State<Market> {
+  
   @override
   Widget build(BuildContext context) {
     CurrencyFormat RupiahSettings = CurrencyFormat(
@@ -21,10 +29,10 @@ class Market extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           //Header
-          const Padding(
+          Padding(
             padding: EdgeInsets.only(left: 24.0, right: 24.0, top: 10.0),
             child: Text(
-              'Good morning,',
+              'Hello ${widget.username}',
               style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             ),
           ),
@@ -38,7 +46,7 @@ class Market extends StatelessWidget {
           ),
 
           const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24.0),
+            padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
             child: Divider(),
           ),
 

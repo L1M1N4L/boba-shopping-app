@@ -37,7 +37,7 @@ class CartModel extends ChangeNotifier {
   // remove item from cart
   void removeItemFromCart(int index) {
     _cartItems.removeAt(index);
-    
+
     notifyListeners();
   }
 

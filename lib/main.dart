@@ -1,8 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:grocerystoreapp/cart_model.dart';
-import 'package:grocerystoreapp/intro.dart';
-import 'package:grocerystoreapp/login.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter/material.dart'; //Package
+import 'package:grocerystoreapp/cart_model.dart'; //Page
+import 'package:grocerystoreapp/intro.dart'; // Page
+import 'package:provider/provider.dart'; //Package
 
 void main() {
   runApp(const MainApp());
@@ -13,8 +12,9 @@ class MainApp extends StatelessWidget {
 
   // @override
   // Widget build(BuildContext context) {
-  //   return const MaterialApp(home: IntroScreen());
+  //   return MaterialApp(home: IntroScreen());
   // }
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(

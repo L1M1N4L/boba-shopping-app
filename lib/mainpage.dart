@@ -3,7 +3,7 @@ import 'package:grocerystoreapp/cart_page.dart';
 import 'package:grocerystoreapp/market.dart';
 
 class MainPage extends StatefulWidget {
-  const MainPage({super.key, required this.username});
+  const MainPage({super.key, required this.username}); //Constructor
 
   final String username;
 
@@ -13,10 +13,6 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   int _selectedIndex = 0;
-  static const List<Widget> _widgetOptions = <Widget>[
-    Market(),
-    CartPage(),
-  ];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -26,6 +22,11 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
+    var getusername = widget.username;
+    final List<Widget> _widgetOptions = <Widget>[
+      Market(username: getusername), //rebuild everytime when we call the function ++ memory
+      CartPage(), //We dont need to rebuild the cart page since we have provider.
+    ];
     return Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
@@ -51,16 +52,20 @@ class _MainPageState extends State<MainPage> {
                 ))
           ],
         ),
-        bottomNavigationBar: BottomNavigationBar(items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
-            label: 'Cart',
-          ),
-        ], currentIndex: _selectedIndex, onTap: _onItemTapped),
+        bottomNavigationBar: BottomNavigationBar(
+            fixedColor: Colors.indigo,
+            items: const [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: 'Home',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.shopping_cart),
+                label: 'Cart',
+              ),
+            ],
+            currentIndex: _selectedIndex,
+            onTap: _onItemTapped),
         body: _widgetOptions[_selectedIndex]);
   }
 }
