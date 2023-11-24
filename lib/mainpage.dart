@@ -44,6 +44,46 @@ class _MainPageState extends State<MainPage> {
             MaterialButton(
                 onPressed: () {
                   Navigator.pop(context);
+                  /* 
+                  onPressed: () async{
+                  // confirmation dialog
+                  bool logoutConfirmed = await showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      title: Text('Confirmation'),
+                      content: Text('Do you really want to logout?'),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pop(false);
+                          },
+                          child: Text('No'),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pop(true);
+                          },
+                          child: Text('Yes'),
+                        ),
+                      ],
+                    ),
+                  );
+
+                  if (logoutConfirmed == true) {
+                    // After successful logout, the user will be going to the login page
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (context) => IntroScreen()),
+                    );
+                  }
+                 },
+                 child: Icon(
+                  Icons.logout,
+                  color: Colors.red,
+                  size: 35,
+                ))
+          ],
+        ),
+                  */
                 },
                 child: Icon(
                   Icons.logout,
