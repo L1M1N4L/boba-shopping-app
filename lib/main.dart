@@ -3,6 +3,7 @@ import 'package:grocerystoreapp/cart_model.dart'; //Page
 import 'package:grocerystoreapp/intro.dart'; // Page
 import 'package:provider/provider.dart'; //Package
 
+// Run Application
 void main() {
   runApp(const MainApp());
 }
